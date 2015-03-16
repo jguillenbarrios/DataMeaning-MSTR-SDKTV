@@ -1,0 +1,67 @@
+
+
+<p class="dmLayoutSelector dmActiveSelector" data-dmtargetlayout="Highlights">»  HIGHLIGHTS</p>
+<p class="dmLayoutSelector" data-dmtargetlayout="Facility Info">»  FACILITY INFO</p>
+<p class="dmLayoutSelector" data-dmtargetlayout="Details">»  DETAILS</p>
+<p class="dmLayoutSelector" data-dmtargetlayout="HHonors">»  HHONORS</p>
+<p class="dmLayoutSelector" data-dmtargetlayout="Trends">»  TRENDS</p>
+
+<!--instructions:
+- Add this code to a dashboard in order to provide links for switching between layouts.
+- Change the "data-dmtargetlayout" attribute in order to control which layout each link targets
+You can use any type of HTML tag- not just <p> ... </p>. For example, you can use <img> ... </img>
+- Use the "dmActiveSelector" class for the link that corresponds to the current layout. For example, in the HTML above,
+the first link represents the active layout. In the FACILITY INFO layout, you would add the "dmActiveSelector" class to the second
+link and remove it from the first link.
+- Modify the CSS in the style attribute below as needed
+-->
+<style>
+.dmLayoutSelector {cursor:default;}
+.dmActiveSelector {color: #FFF;}
+</style>
+<script>
+setTimeout(function(){
+   //Defining filter and forEach because- thanks Internet Explorer
+   var forEach=function(iterable,func){
+    var curItem;
+    var index;
+    var results=[];
+    for(index=0;index<iterable.length;index++){
+      curItem=iterable[index];
+      func(curItem,index,iterable);
+    }
+   };
+   var filter=function(iterable,func){
+    var curItem;
+    var index;
+    var results=[];
+    forEach(iterable,function(item){
+     if (func(item)){
+      results.push(item);
+     }
+    });
+    return results;
+   };
+
+   //Adds an action to be performed when the user clicks each link
+   forEach(document.getElementsByClassName('dmLayoutSelector'),function(selector){
+      selector.onclick=function(e){
+        //The name of the layout that this link targets
+        var targetLayout=selector.getAttribute('data-dmtargetlayout');
+        //Find the MSTR layout button whose name matches that of the 'data-dmtargetlayout' attribute
+        var layoutButton=filter(document.getElementsByTagName('*'),function(x){
+            return x.innerText===targetLayout;
+        })[0];
+        //And simulate a click
+        layoutButton.click();
+      };
+   });
+
+//Need to delay if the HTML container will be outside of an info window
+//and the HTML container will be in the default layout
+//0 is 0-millisecond delay and 3000 indicates a 3000-millisecond delay
+},0);
+</script>
+
+
+
