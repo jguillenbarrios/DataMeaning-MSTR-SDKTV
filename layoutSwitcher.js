@@ -6,10 +6,12 @@
 <script>
 //Delayed 1.5 secs to give the dashboard time to load (increase as needed)
 //Suggestion: give the default layout a longer delay
-var DELAY=1500;
-setTimeout(function(){
-	//Defining filter and forEach because- thanks Internet Explorer
-	var forEach=function(iterable,func){
+
+
+(function(){
+	//Defining _each and _filter because older browsers may not have
+	//Array.prototype.filter and Array.prototype.forEach
+	var _each=function(iterable,func){
 		var curItem;
 		var index;
 		var results=[];
@@ -19,11 +21,11 @@ setTimeout(function(){
 		}
 		return results;	
 	};
-	var filter=function(iterable,func){
+	var _filter=function(iterable,func){
 		var curItem;
 		var index;
 		var results=[];
-		forEach(iterable,function(item){
+		_each(iterable,function(item){
 			if (func(item)){
 				results.push(item);
 			}
@@ -31,19 +33,41 @@ setTimeout(function(){
 		return results;
 	};
 
-	forEach(document.getElementsByClassName('dmLayoutSelector'),function(link){
-		link.onclick=function(e){
-			var targetLayout=link.getAttribute('data-dmtargetlayout');;
-			var layoutButton=filter(document.getElementsByTagName('*'),function(x){
-				return x.innerText===targetLayout;
-			})[0];
-			layoutButton.click();
-		};
-	});
- //(buggy) uncomment the next line if you want hide the ugly MSTR layout selectors
- //document.getElementsByClassName('mstrmojo-TabStrip')[0].style.display="none";
-},DELAY);
+
+	var firstElementWithText=function(elementsToSearch,searchText){
+		console.log(arguments);
+		var element=null;
+		var element=_filter(elementsToSearch,function(x){
+				console.log('found')
+				return x.innerText===searchText;
+		})[0];
+		console.log('element: ',element);
+		return element;
+	};
+
+	var activateLinks=function(){
+		//Adds a click handler to a link
+		//the click handler looks for the 'data-dmtargetlayout attribute'
+		//to know which layout to click
+		var activateLink=function(link){
+			link.onclick=function(e){
+				//Search all elements here instead?
+				var targetLayout=link.getAttribute('data-dmtargetlayout');
+				var allElements=document.getElementsByClassName(document.getElementsByTagName('*'));
+				var layoutButton=firstElementWithText(allElements,targetLayout);
+				layoutButton.click();
+			};			
+		};	
+		var links=document.getElementsByClassName('dmLayoutSelector');
+		_each(links,activateLink);
+	};
+
+	var DELAY=1500;
+	setTimeout(activateLinks,DELAY)
+	 //(buggy) uncomment the next line if you want hide the ugly MSTR layout selectors
+	 //document.getElementsByClassName('mstrmojo-TabStrip')[0].style.display="none";
+	
+
+})();
 </script>
-
-
 
