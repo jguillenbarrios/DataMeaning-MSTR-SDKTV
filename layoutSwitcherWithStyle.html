@@ -5,9 +5,18 @@
     <p class="dmLayoutSelector" data-dmtargetlayout="4"> Layout 4 </p> 
 </div>
 
+
+
+
+
 <script>
+
+
+
     //Delayed 1.5 secs to give the dashboard time to load (increase as needed)
     //Suggestion: give the default layout a longer delay
+
+
     (function() {
         //Defining _each and _filter because older browsers may not have
         //Array.prototype.filter and Array.prototype.forEach
@@ -33,11 +42,30 @@
             return results;
         };
 
+        var layoutSelectorStyle='margin: 5;px padding: 5px; cursor: pointer; border:black solid 2px; webkit-user-select: none; moz-user-select: none; ms-user-select: none; userSelect: none;';
+        var activeLayoutSelectorStyle=layoutSelectorStyle+'background-color:lightblue;';
+        
         var getTargetLayoutButton=function(link){
             var layoutButtons = document.getElementsByClassName('mstrmojo-TabButton');
             var targetLayoutIndex = parseInt(link.getAttribute('data-dmtargetlayout'))-1;
             var layoutButton = layoutButtons[targetLayoutIndex];
             return layoutButton;            
+        };
+        var _applyStyle=function(className,style){
+            _each(document.getElementsByClassName(className),function(element){
+                element.setAttribute('style',style);
+            });
+        };
+        var applyLinkStyles=function(links){
+            _each(links,function(link){
+                link.classList.remove('dmActiveLayoutSelector');
+                layoutButton=getTargetLayoutButton(link);
+                if(layoutButton && layoutButton.classList.contains('selected')){
+                    link.classList.add('dmActiveLayoutSelector')
+                }
+            });
+            _applyStyle('dmLayoutSelector',layoutSelectorStyle);
+            _applyStyle('dmActiveLayoutSelector',activeLayoutSelectorStyle);
         };
 
         var links = document.getElementsByClassName('dmLayoutSelector');
@@ -52,10 +80,12 @@
                             'equal to the index of the target layout'
                         console.log(message);
                     }
+                setTimeout(function(){applyLinkStyles(links);},200);   
         };
         _each(links, function(link){
-           link.onclick=clickHandler;
+           link.onclick=clickHandler
         });
+        applyLinkStyles(links);
             //(buggy) uncomment the next line if you want hide the ugly MSTR layout selectors
             //document.getElementsByClassName('mstrmojo-TabStrip')[0].style.display="none";
     })(); </script>
