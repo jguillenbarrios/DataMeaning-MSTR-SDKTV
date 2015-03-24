@@ -40,7 +40,6 @@
             return layoutButton;            
         };
 
-        var links = document.getElementsByClassName('dmLayoutSelector');
         var clickHandler=function(e){
                     var link=e.target;                 
                     var targetLayoutButton=getTargetLayoutButton(link);
@@ -53,6 +52,9 @@
                         console.log(message);
                     }
         };
+        
+        var links = document.getElementsByClassName('dmLayoutSelector');
+
         _each(links, function(link){
            link.onclick=clickHandler;
         });
