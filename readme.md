@@ -9,7 +9,7 @@ This repository contains an as-is sample of a MicroStrategy SDK customization fr
 
 # See Also #
 
-See Darren Holmblad's MicroStrategySDKTV repository for additional customizations. The videos are all
+See Darren Holmblad's [MicroStrategySDKTV repository](https://github.com/Dholmblad/MicroStrategySDKTV) for additional customizations. The videos are all on the [Data Meaning resources page](http://datameaning.com/resources/learn-more/sdk-tv).
 
 1. Deploying MicroStrategy Portlet on Liferay 
 2. MicroStrategy Portlet Authentication Part 1 GetSessionState
