@@ -1,4 +1,4 @@
-* Instructions *
+# Instructions #
 
 1. Create a MicroStrategy Report Services document with multiple layouts.
 2. Create a link that opens an information window.
@@ -8,10 +8,6 @@
 6. Paste the contents of your text editor into the the HTML container in the document.
 7. Duplicate the menu so that the same menu displays in each layout. 
 
-> Hint: You can use MicroStrategy developer to copy and paste layouts.
+> This code is provided as-is and is purely for illustrative purposes. Do not depend on the code as-is.
 
-* Caveats *
-
-- This code is provided as-is and is purely for illustrative purposes. Do not depend on the code as-is.
-
-- This customization works only in MicroStrategy Web Express Mode.
+> This customization works only in MicroStrategy Web Express Mode.
