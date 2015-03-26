@@ -1,0 +1,23 @@
+{
+  "name": "fast-integration-with-a-web-app",
+  "version": "0.0.0",
+  "description": "Example code from a Data Meaning SDK TV video",
+  "main": "serverTemplate.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mheiber/DataMeaning-MSTR-SDKTV"
+  },
+  "author": "Max Heiber",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mheiber/DataMeaning-MSTR-SDKTV/issues"
+  },
+  "homepage": "https://github.com/mheiber/DataMeaning-MSTR-SDKTV",
+  "dependencies": {
+    "express": "^4.12.3",
+    "request": "^2.54.0"
+  }
+}
