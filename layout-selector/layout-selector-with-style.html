@@ -1,0 +1,108 @@
+<div>
+    <p class="dmLayoutSelector" 
+        data-dmtargetlayout = "1" 
+        data-dmhighlightcolor="#36f"> Budget 
+    </p> 
+    <p class="dmLayoutSelector" 
+        data-dmtargetlayout="2" 
+        data-dmhighlightcolor="#C2C1C1"> Forecast 
+    </p>
+        <p class="dmLayoutSelector" 
+        data-dmtargetlayout="3" 
+        data-dmhighlightcolor="#3ec782"> Actuals 
+    </p> 
+        <p class="dmLayoutSelector" 
+        data-dmtargetlayout="4" 
+        data-dmhighlightcolor="#FFB442"> Feedback 
+    </p> 
+</div>
+
+
+
+<script>
+
+    (function() {
+        //Defining _each and _filter because older browsers may not have
+        //Array.prototype.filter and Array.prototype.forEach
+        var _each = function(iterable, func) {
+            var curItem;
+            var index;
+            var results = [];
+            for (index = 0; index < iterable.length; index++) {
+                curItem = iterable[index];
+                func(curItem, index, iterable);
+            }
+            return results;
+        };
+        var _filter = function(iterable, func) {
+            var curItem;
+            var index;
+            var results = [];
+            _each(iterable, function(item) {
+                if (func(item)) {
+                    results.push(item);
+                }
+            });
+            return results;
+        };
+
+        var layoutSelectorStyle='margin: 2px 0px 2px 2px;padding: 1px; cursor: pointer; border:black solid 2px; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;font-size:30pt;font-family:Arial,serif;';
+        var activeLayoutSelectorStyle=layoutSelectorStyle+'background-color:{backgroundColor};';
+        
+        var getTargetLayoutButton=function(link){
+            var layoutButtons = document.getElementsByClassName('mstrmojo-TabButton');
+            var targetLayoutIndex = parseInt(link.getAttribute('data-dmtargetlayout'))-1;
+            var layoutButton = layoutButtons[targetLayoutIndex];
+            return layoutButton;            
+        };
+
+        var isActiveMSTRLayoutButton=function(layoutButton){
+            return layoutButton && layoutButton.classList.contains('selected');
+        };
+
+        var _applyStyle=function(className,style){
+            _each(document.getElementsByClassName(className),function(element){
+                element.setAttribute('style',style);
+            });
+        };
+
+        var applyLinkStyles=function(links){
+            var activeStyle=activeLayoutSelectorStyle;
+            _each(links,function(link){
+                link.classList.remove('dmActiveLayoutSelector');
+                layoutButton=getTargetLayoutButton(link);
+                if(isActiveMSTRLayoutButton(layoutButton)){
+                    link.classList.add('dmActiveLayoutSelector');
+                    if(link.getAttribute('data-dmhighlightcolor')){
+                        var backgroundColor=link.getAttribute('data-dmhighlightcolor');
+                        activeStyle=activeStyle.replace('{backgroundColor}',backgroundColor);
+                    }
+                }
+            });
+            _applyStyle('dmLayoutSelector',layoutSelectorStyle);
+            _applyStyle('dmActiveLayoutSelector',activeStyle);
+        };
+
+        var links = document.getElementsByClassName('dmLayoutSelector');
+        var clickHandler=function(e){
+                    var link=e.target;                 
+                    var targetLayoutButton=getTargetLayoutButton(link);
+                    if(targetLayoutButton){
+                        targetLayoutButton.click();
+                    }
+                    else{
+                        var message='Broken link. Set the data-dmtargetlayout attribute'+
+                            'equal to the index of the target layout'
+                        console.log(message);
+                    }
+                setTimeout(function(){applyLinkStyles(links);},200);   
+        };
+        setTimeout(function(){
+            _each(links, function(link){
+               link.onclick=clickHandler
+            });
+            applyLinkStyles(links);
+
+        },0)
+
+    })(); </script>
