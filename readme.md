@@ -4,11 +4,11 @@ This repository contains an as-is sample of a MicroStrategy SDK customization fr
 
 # SDK TV Episodes #
 
-[7. Creating a Custom Layout selector](http://datameaning.com/resources/learn-more/sdk-tv) (coming soon)
+[7. Creating a Custom Layout selector](http://datameaning.com/resources/learn-more/sdk-tv) 
 
-[8. Creating a Custom Layout selector: Code Explanation](http://datameaning.com/resources/learn-more/sdk-tv) (coming soon)
+[8. Creating a Custom Layout selector: Code Explanation](http://datameaning.com/resources/learn-more/sdk-tv) 
 
-[9. Fast Integration with a Web App](http://datameaning.com/resources/learn-more/sdk-tv) (coming soon)
+[9. Fast Integration with a Web App](http://datameaning.com/resources/learn-more/sdk-tv)
 
 # See Also #
 
