@@ -3,7 +3,7 @@
 1. Create a MicroStrategy Report Services document with multiple layouts.
 2. Create a link that opens an information window.
 3. Add an HTML container to the information window.
-4. Paste the contents of LayoutSelector.html (from this folder) into a text editor.
+4. Paste the contents of Layout-selector.html or layout-selector-with-style.html (from this folder) into a text editor. The difference is that the "with-style" one looks nicer.
 5. Edit the `<p>` tags so that each link has the name of the corresponding layout. For example, the first link should contain text content that you want to use for the first layout.
 6. Paste the contents of your text editor into the the HTML container in the document.
 7. Duplicate the menu so that the same menu displays in each layout. 
