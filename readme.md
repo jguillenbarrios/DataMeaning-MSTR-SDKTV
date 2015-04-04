@@ -10,6 +10,8 @@ This repository contains an as-is sample of a MicroStrategy SDK customization fr
 
 [9. Fast Integration with a Web App](http://datameaning.com/resources/learn-more/sdk-tv)
 
+[10. Creating a Search Box](http://datameaning.com/resources/learn-more/sdk-tv) (Coming Soon)
+
 # See Also #
 
 See Darren Holmblad's [MicroStrategySDKTV repository](https://github.com/Dholmblad/MicroStrategySDKTV) for more SDK TV sample code. The videos are all on the [Data Meaning resources page](http://datameaning.com/resources/learn-more/sdk-tv).
@@ -19,4 +21,4 @@ See Darren Holmblad's [MicroStrategySDKTV repository](https://github.com/Dholmbl
 3. [MicroStrategy Portlet Authentication Part 2 CredentialMapper](http://datameaning.com/resources/learn-more/sdk-tv) (coming soon)
 4. [Building Custom MicroStrategy Ajax Visualizations](http://datameaning.com/resources/learn-more/sdk-tv) (coming soon)
 5. [Adding Custom Fonts to MicroStrategy Web](http://datameaning.com/resources/learn-more/sdk-tv) (coming soon)
-6. [Building Custom MicroStrategy Ajax Visualization Part 2 Google Maps](http://datameaning.com/resources/learn-more/sdk-tv) (coming soon)
+6. [Building Custom MicroStrategy Ajax Visualization Part 2 Google Maps](http://datameaning.com/resources/learn-more/sdk-tv)

@@ -1,0 +1,24 @@
+<form id="dm-search-form">
+	<input type="search" placeholder="search for patient by ID" autofocus />
+	<input type="submit" value="Search" />
+</form>
+
+<script>
+	(function(){
+		//Paste the target document's ID inside the quotes
+		var documentID = '';
+
+		var urlTemplate = 'mstrWeb?evt=2048001&documentID={documentID}&Project={project}&valuePromptAnswers={query}'
+			.replace('{project}',mstrApp.projectName)
+			.replace('{documentID}', documentID);
+
+		var form=document.querySelector('#dm-search-form');
+		var input=form.querySelector('input[type=search]');
+
+		form.addEventListener('submit',function(e){
+			e.preventDefault();
+			var targetURL=urlTemplate.replace('{query}',input.value);
+			window.location.href=targetURL;
+		});
+	})();
+</script>
